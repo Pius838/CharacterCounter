@@ -323,7 +323,8 @@ body {
     .title { font-size: 2.5rem; }
 }
 
-========================================================================== */
+
+
 @media (max-width: 768px) {
     body {
         padding: 24px 16px; /* Reduced outer workspace padding */
