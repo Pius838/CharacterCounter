@@ -1,0 +1,324 @@
+/* Baseline Setup */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-main: #12131A;
+    --text-primary: #FFFFFF;
+    --text-secondary: #E4E4E7;
+    --input-bg: #1E202C;
+    --input-border: #3F3F46;
+    --checkbox-bg: #27272A;
+    --bar-empty: #27272A;
+    --bar-fill: #D6BCFA;
+    
+    --card-purple-bg: #D6BCFA;
+    --card-yellow-bg: #FEF08A;
+    --card-orange-bg: #FFEDD5;
+    --card-text-dark: #12131A;
+}
+
+body.light-theme { 
+    --bg-main: #F4F4F5;
+    --text-primary: #12131A;
+    --text-secondary: #52525B;
+    --input-bg: #FFFFFF;
+    --input-border: #E4E4E7;
+    --checkbox-bg: #E4E4E7;
+    --bar-empty: #E4E4E7;
+    --bar-fill: #9880E5;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: 'DM Sans', system-ui, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.container {
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.theme-toggle {
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 8px;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.text-area-input {
+    width: 100%;
+    height: 200px;
+    padding: 20px;
+    font-size: 1.1rem;
+    border-radius: 12px;
+    border: 1px solid var(--input-border);
+    background-color: var(--input-bg);
+    color: var(--text-primary);
+    resize: none;
+    line-height: 1.5;
+}
+
+.text-area-input.input-error {
+    border-color: #EF4444 !important;
+    box-shadow: 0 0 0 1px #EF4444;
+}
+
+/* Control Layout Options */
+.controls-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: -12px;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.control-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+}
+
+.checkbox-input {
+    display: none;
+}
+
+.custom-checkbox {
+    width: 18px;
+    height: 18px;
+    border: 1px solid var(--input-border);
+    border-radius: 4px;
+    background-color: var(--checkbox-bg);
+    display: inline-block;
+    position: relative;
+}
+
+.checkbox-input:checked + .custom-checkbox {
+    background-color: var(--bar-fill);
+    border-color: var(--bar-fill);
+}
+
+.checkbox-input:checked + .custom-checkbox::after {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 2px;
+    width: 5px;
+    height: 9px;
+    border: solid var(--bg-main);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.limit-number-input {
+    width: 80px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid var(--input-border);
+    background-color: var(--input-bg);
+    color: var(--text-primary);
+    outline: none;
+}
+
+.reading-time {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+.warning-banner {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: rgba(239, 68, 68, 0.1);
+    border: 1px solid #EF4444;
+    padding: 12px 16px;
+    border-radius: 8px;
+    color: #EF4444;
+}
+
+/* Focused, Sized, and Centered Metric Cards */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    max-width: 900px;
+    width: 100%;
+    margin: 30px;
+    
+}
+
+.metric-card {
+    border-radius: 16px;
+    height: 140px;
+    padding: 32px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+    overflow: hidden;
+    color: var(--card-text-dark);
+}
+
+.card-info {
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.card-purple { background-color: var(--card-purple-bg); }
+.card-yellow { background-color: orange; }
+.card-orange { background-color: rgb(234, 106, 59); }
+
+.result-value {
+    font-size: 4.8rem;
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+}
+
+.result-label {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.card-pattern {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 140px;
+    height: 100%;
+    opacity: 0.5;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    z-index: 1;
+}
+.pattern-purple { background-image: url('./assets/images/pattern-character-count.svg'); opacity: 2;}
+.pattern-yellow { background-image: url('./assets/images/pattern-word-count.svg'); }
+.pattern-orange { background-image: url('./assets/images/pattern-sentence-count.svg'); }
+
+/* Letter Density Styling */
+.density-section {
+    margin-top: 8px;
+}
+
+.density-heading {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+}
+
+.letter-density-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.density-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.density-char {
+    width: 16px;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.progress-container {
+    flex-grow: 1;
+    height: 12px;
+    background-color: var(--bar-empty);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: var(--bar-fill);
+    border-radius: 999px;
+    transition: width 0.3s ease;
+}
+
+.density-stats {
+    font-size: 1rem;
+    min-width: 90px;
+    text-align: right;
+    color: var(--text-primary);
+}
+
+/* See More Button Feature Styling */
+.see-more-btn {
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 24px;
+    cursor: pointer;
+}
+
+.chevron-icon {
+    transition: transform 0.2s ease;
+}
+
+.see-more-btn.expanded .chevron-icon {
+    transform: rotate(180deg);
+}
+
+.hidden {
+    display: none !important;
+}
+
+@media (max-width: 768px) {
+    .metrics-grid {
+        grid-template-columns: 1fr;
+        max-width: 380px;
+    }
+    .title { font-size: 2.5rem; }
+}

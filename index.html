@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Counter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800&display=swap" rel="stylesheet">
+    <link href="./character_counter.css" rel="stylesheet">
+</head>
+<body class="dark-theme">
+  
+    <div class="container">
+        <header class="app-header">
+            <div class="logo-container">
+                <img id="logoImg" src="./assets/images/logo-dark-theme.svg" alt="Character Counter Logo" class="logo">
+            </div>
+            <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle Theme">
+                <img id="themeIcon" src="./assets/images/icon-sun.svg" alt="Theme Toggle Icon" class="icon">
+            </button>
+        </header> 
+
+        <main class="main-content">
+            <h1 class="title">Analyze your text <br>in real-time.</h1>
+
+            <div class="textarea-wrapper">
+                <textarea id="textAreaInput" placeholder="Type your text here..." oninput="processText()" class="text-area-input"></textarea>
+            </div>
+
+            <div class="controls-bar">
+                <div class="checkbox-group">
+                    <label class="control-label">
+                        <input type="checkbox" id="excludeSpaces" onchange="processText()" class="checkbox-input">
+                        <span class="custom-checkbox"></span>
+                        Exclude Spaces
+                    </label>
+                    <label class="control-label">
+                        <input type="checkbox" id="setLimit" onchange="toggleLimitField()" class="checkbox-input">
+                        <span class="custom-checkbox"></span>
+                        Set Character Limit
+                    </label>
+                    <input type="number" class="limit-number-input hidden" id="limitInput" placeholder="200" min="1" oninput="processText()">
+                </div>
+                <p class="reading-time">Approx. reading time: <span id="readingTime">&lt;1 minute</span></p>
+            </div>
+
+            <div class="warning-banner hidden" id="warningBanner">
+                <img src="./assets/images/icon-info.svg" alt="Warning Info">
+                <span>Limit exceeded! Your text is longer than the set character limit.</span>
+            </div>
+
+            <section class="metrics-grid">
+                <div class="metric-card card-purple">
+                    <div class="card-info">
+                        <span id="charCount" class="result-value">0</span>
+                        <p class="result-label">Total Characters</p>
+                    </div>
+                    <div class="card-pattern pattern-purple"></div>
+                </div>
+
+                <div class="metric-card card-yellow">
+                    <div class="card-info">
+                        <span id="wordCount" class="result-value">0</span>
+                        <p class="result-label">Word Count</p>
+                    </div>
+                    <div class="card-pattern pattern-yellow"></div>
+                </div>
+
+                <div class="metric-card card-orange">
+                    <div class="card-info">
+                        <span id="sentenceCount" class="result-value">0</span>
+                        <p class="result-label">Sentence Count</p>
+                    </div>
+                    <div class="card-pattern pattern-orange"></div>
+                </div>  
+            </section>
+
+            <section class="density-section">
+                <h2 class="density-heading">Letter Density</h2>
+                <ul id="letterDensityList" class="letter-density-list">
+                    </ul>
+                <button id="seeMoreBtn" class="see-more-btn hidden" onclick="toggleDensityView()">
+                    <span>See more</span>
+                    <svg class="chevron-icon" width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </section>
+        </main>
+    </div>
+
+    <script src="./counter.js"></script>
+</body>
+</html>
