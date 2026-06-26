@@ -322,3 +322,111 @@ body {
     }
     .title { font-size: 2.5rem; }
 }
+
+========================================================================== */
+@media (max-width: 768px) {
+    body {
+        padding: 24px 16px; /* Reduced outer workspace padding */
+    }
+
+    .title {
+        font-size: 2.5rem; /* Scaled down header title to prevent layout wrapping bugs */
+        margin-bottom: 20px;
+    }
+
+    .text-area-input {
+        height: 180px; /* Slightly shorter input box allocation for compact views */
+        font-size: 1rem;
+    }
+
+    /* Transition the metrics row layout into a structured 2-column or 1-column setup */
+    .metrics-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns fits nicely on tablets */
+        gap: 16px;
+        max-width: 100%;
+    }
+
+    /* Make the third card (Sentence Count) span full horizontal width for symmetry */
+    .metrics-grid .metric-card:nth-child(3) {
+        grid-column: span 2;
+    }
+
+    .metric-card {
+        height: 160px; /* Optimized height profile */
+        padding: 24px 20px;
+    }
+
+    .result-value {
+        font-size: 3.8rem; /* Scaled tracking metric values down proportionally */
+    }
+
+    .checkbox-group {
+        gap: 16px; /* Brings operational toggle boxes closer together */
+    }
+}
+
+/* ==========================================================================
+   Smartphone Optimization Breakpoint (480px and down)
+   ========================================================================== */
+@media (max-width: 480px) {
+    .title {
+        font-size: 2rem; /* Clean heading layout footprint for tiny displays */
+        line-height: 1.2;
+    }
+
+    /* Wrap the control options and reading meter into stacked standalone blocks */
+    .controls-bar {
+        flex-direction: column;
+        align-items: flex-start; /* Left-align operational tools */
+        gap: 14px;
+    }
+
+    .checkbox-group {
+        flex-direction: column; /* Vertically stack checkboxes for easy thumb tapping */
+        align-items: flex-start;
+        width: 100%;
+        gap: 12px;
+    }
+
+    .control-label {
+        font-size: 1rem; /* Slightly larger text size to ensure readable text on small screens */
+        padding: 4px 0;   /* Creates explicit vertical spacing to eliminate accidental clicks */
+        width: 100%;
+    }
+
+    .reading-time {
+        width: 100%;
+        text-align: left;
+        border-top: 1px solid var(--input-border); /* Adds a clean separator bar */
+        padding-top: 12px;
+    }
+
+    /* Force metric cards into a seamless single vertical list column */
+    .metrics-grid {
+        grid-template-columns: 1fr;
+        max-width: 100%;
+    }
+
+    .metrics-grid .metric-card:nth-child(3) {
+        grid-column: span 1; /* Reset symmetry for absolute single column configuration */
+    }
+
+    .metric-card {
+        height: 140px;
+        padding: 20px;
+    }
+
+    .result-value {
+        font-size: 3.2rem;
+    }
+
+    /* Letter Density Layout Adjustments */
+    .density-row {
+        gap: 10px; /* Tightens space usage between character keys, progress indicators, and counters */
+    }
+
+    .density-stats {
+        min-width: 80px;
+        font-size: 0.9rem;
+    }
+}
